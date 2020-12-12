@@ -1,3 +1,4 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -13,6 +14,62 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+function runPrompt() {
+    const infoArray = [{
+        type: "input",
+        message: "Enter your name.",
+        name: "name"
+    }, {
+        type: "input",
+        message: "What is your ID?",
+        name: "id"
+    }, {
+        type: "input",
+        message: "What is your email?",
+        name: "email"
+    }, {
+        type: "list",
+        message: "What is your title",
+        choices: ["Manager", "Engineer", "Intern"],
+        name: "title"
+    }];
+
+    return inquirer
+        .prompt(infoArray);
+}
+
+function infoManager() {
+    const infoArray = [{
+        type: "input",
+        message: "What is your work number?",
+        name: "work number"
+    }];
+    return inquirer
+    .prompt(infoArray);
+}
+function infoEngineer() {
+    const infoArray = [{
+        type: "input",
+        message: "Enter Github user name",
+        name: "github"
+    }];
+    return inquirer
+    .prompt(infoArray);
+}
+function infoIntern() {
+    const infoArray = [{
+        type: "input",
+        message: "Where did you go to school?",
+        name: "school"
+    }];
+
+    return inquirer
+        .prompt(infoArray);
+}
+
+
+runPrompt();
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
